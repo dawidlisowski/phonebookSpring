@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Użytkownik</title>
+</head>
+<body>
+    <div style="text-align: center;">
+        <h1 th:text="${loginInfo}"></h1>
+        <form action="/user/login" method="post" th:object="${loginForm}">
+            <input type="submit" value="Wyloguj">
+        </form>
+    </div>
+</body>
+</html>

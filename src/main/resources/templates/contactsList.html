@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div style="text-align: center;">
+        <ul>
+            <li th:each="contact : ${contacts}">
+                <span th:text="${contact.getName() + ' ' + contact.getSurname() + ' '}"></span>
+                <strong th:text="${contact.getNumber()}"></strong><br/>
+<!--                <a th:href="'/contact/delete/' + ${contact.getId()}">Usuń</a>-->
+                <form style="display:inline-block" th:action="'/contact/delete/' + ${contact.getId()}">
+                    <input type="submit" value="Usuń">
+                </form>
+<!--                <a th:href="'/contact/note/' + ${contact.getId()}">Notatki</a>-->
+                <form style="display:inline-block" th:action="'/contact/note/' + ${contact.getId()}">
+                    <input type="submit" value="Notatki">
+                </form>
+                <hr/>
+            </li>
+        </ul>
+    </div>
+</body>
+</html>

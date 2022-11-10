@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Dodaj Kontakt</title>
+</head>
+<body>
+
+    <div style="text-align: center;">
+        <h1 th:text="${contactInfo}"></h1>
+        <form action="/contact/add" method="post" th:object="${contactForm}">
+            <p th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></p>
+            <input type="text" th:field="*{name}" placeholder="Imie"><br/>
+
+            <p th:if="${#fields.hasErrors('surname')}" th:errors="*{surname}"></p>
+            <input type="text" th:field="*{surname}" placeholder="Nazwisko"><br/>
+
+            <p th:if="${#fields.hasErrors('phone')}" th:errors="*{phone}"></p>
+            <input type="text" th:field="*{phone}" placeholder="Telefon"><br/>
+            <input type="submit" value="Wyślij">
+        </form>
+    </div>
+</body>
+</html>

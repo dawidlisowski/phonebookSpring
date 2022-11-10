@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Notatki</title>
+</head>
+<body>
+    <div style="text-align: left;">
+        <ul>
+            <li th:each="note : ${contactData.getNotes()}">
+                <span th:text="${note.getNote()} + ' '"></span>
+<!--                <a th:href="'/contact/note/delete/' + ${contactData.getId()} + '/' + ${note.getId()}">Usuń</a>-->
+                <form style="display:inline-block" th:action="'/contact/note/delete/' + ${contactData.getId()} + '/' + ${note.getId()}">
+                    <input type="submit" value="Usuń">
+                </form>
+            </li>
+        </ul>
+        <form action="/contact/show">
+            <input type="submit" value="Kontakty">
+        </form>
+    </div>
+
+    <div style="text-align: center;">
+        <form th:action="'/note/' + ${contactData.getId()}" method="post" th:object="${noteForm}">
+            <input type="text" th:field="*{note}" placeholder="Notatka"><br/>
+            <input type="submit" value="Dodaj">
+        </form>
+    </div>
+
+</body>
+</html>
